@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЗДОРОВЬЕ ДЛЯ ВСЕХ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --light-blue: #e6f2ff;
+            --medium-blue: #4da6ff;
+            --dark-blue: #0066cc;
+            --white: #FFFFFF;
+            --black: #000000;
+            --light-gray: #f5f5f5;
+        }
+
+        body {
+            background-color: var(--light-blue);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url('https://pravo.by/upload/iblock/e7f/cth1iyeb61vnvj7vpfncvfy1woswx3ah.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            min-height: 80vh;
+            background-color: rgba(255, 255, 255, 0.85);
+            margin: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 1.2rem;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--dark-blue);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.2);
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #0052a3;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 102, 204, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--medium-blue);
+            box-shadow: 0 4px 15px rgba(77, 166, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background-color: #3385d6;
+            box-shadow: 0 6px 20px rgba(77, 166, 255, 0.3);
+        }
+
+        .btn-large {
+            padding: 1.2rem 2rem;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            padding: 1.2rem 0;
+            border-bottom: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-left: 2rem;
+            flex: 1;
+            text-align: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            flex: 1;
+            justify-content: flex-end;
+        }
+
+        nav li {
+            margin-left: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--dark-blue);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--dark-blue);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--black);
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            margin-right: 1rem;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--black);
+            padding: 0.2rem 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            color: var(--dark-blue);
+        }
+
+        .lang-btn.active {
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .lang-separator {
+            margin: 0 0.3rem;
+            color: #ccc;
+        }
+
+        /* Hotline Button */
+        .hotline-btn {
+            display: flex;
+            align-items: center;
+            background: #ff4444;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .hotline-btn:hover {
+            background: #ff2222;
+            transform: translateY(-2px);
+        }
+
+        .hotline-btn i {
+            margin-right: 0.3rem;
+        }
+
+        /* Welcome Banner */
+        .welcome-banner {
+            background: linear-gradient(135deg, #1a6dba 0%, #2c8bd1 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 80px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .welcome-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .welcome-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .welcome-subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            opacity: 0.9;
+            font-style: italic;
+            margin: 0;
+        }
+
+        /* Personal Data Section */
+        .personal-section {
+            background-color: rgba(230, 242, 255, 0.9);
+            padding: 5rem 0;
+            margin-top: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark-blue);
+            position: relative;
+            padding-bottom: 1rem;
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--medium-blue), var(--dark-blue));
+            border-radius: 3px;
+        }
+
+        /* Personal Buttons Styling */
+        .buttons-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .personal-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem 1.5rem;
+            background: linear-gradient(135deg, var(--white) 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+        }
+
+        .personal-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--dark-blue);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .personal-btn:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--medium-blue);
+        }
+
+        .personal-btn:hover::before {
+            transform: scaleX(1);
+        }
+
+        .btn-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.4s ease;
+        }
+
+        .personal-btn:hover .btn-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        /* Individual button colors */
+        .btn-1 .btn-icon { color: #4da6ff; }
+        .btn-2 .btn-icon { color: #ff6b6b; }
+        .btn-3 .btn-icon { color: #51cf66; }
+        .btn-4 .btn-icon { color: #ffd43b; }
+        .btn-5 .btn-icon { color: #9775fa; }
+        .btn-6 .btn-icon { color: #f783ac; }
+
+        .btn-1:hover { background: linear-gradient(135deg, #e6f2ff 0%, #d4e7ff 100%); }
+        .btn-2:hover { background: linear-gradient(135deg, #ffe6e6 0%, #ffd4d4 100%); }
+        .btn-3:hover { background: linear-gradient(135deg, #e6ffe6 0%, #d4ffd4 100%); }
+        .btn-4:hover { background: linear-gradient(135deg, #fff9e6 0%, #fff4d4 100%); }
+        .btn-5:hover { background: linear-gradient(135deg, #f0e6ff 0%, #e6d4ff 100%); }
+        .btn-6:hover { background: linear-gradient(135deg, #ffe6f0 0%, #ffd4e6 100%); }
+
+        /* Consultant Button */
+        .consultant-btn-container {
+            display: flex;
+            justify-content: center;
+            margin: 4rem 0 2rem;
+        }
+
+        .consultant-btn {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem 3rem;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, #0052a3 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .consultant-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .consultant-btn:hover::before {
+            left: 100%;
+        }
+
+        .consultant-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 102, 204, 0.6);
+            background: linear-gradient(135deg, #0052a3 0%, #004080 100%);
+        }
+
+        .consultant-btn i {
+            font-size: 1.8rem;
+        }
+
+        /* Text size adjustments */
+        .personal-btn span {
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* Prevention Section - Улучшенный стиль */
+        .prevention-section {
+            background-color: rgba(230, 242, 255, 0.9);
+        }
+
+        .prevention-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .prevention-title {
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .prevention-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--medium-blue), var(--dark-blue));
+            border-radius: 2px;
+        }
+
+        .prevention-subtitle {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .article-category {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .category-title {
+            text-align: center;
+            color: var(--dark-blue);
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--medium-blue);
+            font-size: 1.8rem;
+            position: relative;
+        }
+
+        .category-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: var(--dark-blue);
+        }
+
+        .articles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .article-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border-left: 5px solid var(--medium-blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(77, 166, 255, 0.1) 0%, rgba(0, 102, 204, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .article-card:hover::before {
+            opacity: 1;
+        }
+
+        .article-card h3 {
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .article-icon {
+            font-size: 2.2rem;
+            color: var(--medium-blue);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .article-card:hover .article-icon {
+            transform: scale(1.1);
+        }
+
+        /* Центрирование для категории "Другие направления" */
+        .other-directions .articles-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .other-directions .article-card {
+            text-align: center;
+            width: 300px;
+            flex: 0 0 auto;
+        }
+
+        /* Institutions Section */
+        .institutions-section {
+            background-color: rgba(230, 242, 255, 0.9);
+        }
+
+        .institutions-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .institution-card {
+            background-color: var(--white);
+            padding: 1.8rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            cursor: pointer;
+            border-left: 4px solid var(--medium-blue);
+            text-align: center;
+        }
+
+        .institution-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .institution-card h3 {
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+        }
+
+        .institution-icon {
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+        }
+
+        .map-btn-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: rgba(230, 242, 255, 0.9);
+        }
+
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .about-card {
+            flex: 1;
+            min-width: 280px;
+            background-color: var(--white);
+            padding: 1.8rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .about-card h3 {
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .about-card h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: var(--medium-blue);
+            border-radius: 2px;
+        }
+
+        .about-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .about-links a {
+            color: var(--dark-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .about-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal Chat */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+
+        .message-bot {
+            background-color: #f0f0f0;
+            align-self: flex-start;
+        }
+
+        .message-input {
+            display: flex;
+            margin-top: 1rem;
+        }
+
+        .message-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 20px 0 0 20px;
+        }
+
+        .message-input button {
+            background-color: var(--dark-blue);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+        }
+
+        /* Article Modal */
+        .article-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .article-modal-content {
+            background-color: white;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .article-modal-header {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-article-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .article-modal-body {
+            padding: 2rem;
+        }
+
+        /* Map Modal */
+        .map-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .map-modal-content {
+            background-color: white;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .map-modal-header {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-map-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .map-modal-body {
+            padding: 0;
+            height: 600px;
+            position: relative;
+        }
+
+        #minsk-map {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, #003366 100%);
+            color: var(--white);
+            padding: 3rem 0 1.5rem;
+            position: relative;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column {
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: var(--white);
+        }
+
+        .footer-contact {
+            margin-top: 1.5rem;
+        }
+
+        .footer-contact p {
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            position: relative;
+        }
+
+        .vision-btn {
+            position: absolute;
+            right: 0;
+            bottom: 10px;
+            background-color: var(--white);
+            color: var(--dark-blue);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .vision-btn:hover {
+            background-color: var(--light-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav li {
+                margin: 0;
+                text-align: center;
+                padding: 0.8rem 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .language-switcher, .hotline-btn {
+                display: none;
+            }
+
+            .footer-container {
+                justify-content: center;
+            }
+
+            .footer-column {
+                text-align: center;
+                max-width: 100%;
+            }
+
+            .vision-btn {
+                position: relative;
+                margin-top: 1rem;
+                right: auto;
+                bottom: auto;
+            }
+
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .buttons-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .header-left {
+                flex: none;
+            }
+
+            .logo {
+                flex: none;
+                margin-left: 1rem;
+                text-align: left;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .prevention-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .other-directions .articles-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .welcome-banner {
+                padding: 2rem 0;
+                margin-top: 70px;
+            }
+            
+            .welcome-title {
+                font-size: 2.2rem;
+                letter-spacing: 1px;
+            }
+            
+            .welcome-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: 2.5rem 0;
+                margin: 0.5rem;
+            }
+            
+            .personal-section {
+                padding: 3rem 0;
+                margin-top: 1rem;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            .buttons-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .personal-btn {
+                padding: 2rem 1rem;
+                min-height: 160px;
+            }
+            
+            .btn-icon {
+                font-size: 2.5rem;
+            }
+            
+            .consultant-btn {
+                padding: 1.2rem 2rem;
+                font-size: 1.1rem;
+            }
+            
+            .institutions-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .articles-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .other-directions .articles-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+            
+            .personal-btn span {
+                font-size: 0.9rem;
+            }
+            
+            .prevention-title {
+                font-size: 1.8rem;
+            }
+            
+            .category-title {
+                font-size: 1.5rem;
+            }
+            
+            .article-category {
+                padding: 1.5rem;
+            }
+            
+            .other-directions .article-card {
+                width: 100%;
+            }
+            
+            .welcome-banner {
+                padding: 1.5rem 0;
+            }
+            
+            .welcome-title {
+                font-size: 1.8rem;
+            }
+            
+            .welcome-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="header-left">
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ru">RU</button>
+                    <span class="lang-separator">|</span>
+                    <button class="lang-btn" data-lang="bel">BEL</button>
+                    <span class="lang-separator">|</span>
+                    <button class="lang-btn" data-lang="en">ENG</button>
+                </div>
+                <a href="tel:+375172227080" class="hotline-btn">
+                    <i class="fas fa-phone-alt"></i><span data-translate="hotline">Горячая линия</span>
+                </a>
+            </div>
+            <div class="logo" data-translate="logo">ЗДОРОВЬЕ ДЛЯ ВСЕХ</div>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#personal" data-translate="nav-personal">Личный кабинет</a></li>
+                    <li><a href="#prevention" data-translate="nav-prevention">Профилактика</a></li>
+                    <li><a href="#institutions" data-translate="nav-institutions">Учреждения</a></li>
+                    <li><a href="#about" data-translate="nav-about">О проекте</a></li>
+                </ul>
+                <div class="mobile-menu" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Welcome Banner -->
+    <div class="welcome-banner">
+        <div class="container">
+            <div class="welcome-content">
+                <h1 class="welcome-title">ЗДОРОВЬЕ ДЛЯ ВСЕХ</h1>
+                <p class="welcome-subtitle">Ваше здоровье - наша забота</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Personal Data Section -->
+    <section class="personal-section" id="personal">
+        <div class="container">
+            <h2 class="section-title" data-translate="section-personal">Личный кабинет</h2>
+            <div class="buttons-container">
+                <a href="#" class="personal-btn btn-1">
+                    <div class="btn-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <span data-translate="personal-btn-1">Личные данные</span>
+                </a>
+                
+                <a href="#" class="personal-btn btn-2">
+                    <div class="btn-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <span data-translate="personal-btn-2">Запись к врачу</span>
+                </a>
+                
+                <a href="#" class="personal-btn btn-3">
+                    <div class="btn-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <span data-translate="personal-btn-3">Мои записи</span>
+                </a>
+                
+                <a href="#" class="personal-btn btn-4">
+                    <div class="btn-icon">
+                        <i class="fas fa-prescription"></i>
+                    </div>
+                    <span data-translate="personal-btn-4">Мои рецепты</span>
+                </a>
+                
+                <a href="#" class="personal-btn btn-5">
+                    <div class="btn-icon">
+                        <i class="fas fa-file-medical"></i>
+                    </div>
+                    <span data-translate="personal-btn-5">Получить справку/выписку из амбулаторной карты</span>
+                </a>
+                
+                <a href="#" class="personal-btn btn-6">
+                    <div class="btn-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <span data-translate="personal-btn-6">История обращений</span>
+                </a>
+            </div>
+            
+            <div class="consultant-btn-container">
+                <button class="consultant-btn" id="ask-consultant-btn" data-translate="consultant-btn">
+                    <i class="fas fa-comments"></i>
+                    Задать вопрос консультанту
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prevention Section -->
+    <section class="prevention-section" id="prevention">
+        <div class="container">
+            <div class="prevention-header">
+                <h2 class="prevention-title" data-translate="section-prevention">Профилактика заболеваний</h2>
+                <p class="prevention-subtitle">Узнайте о мерах профилактики различных заболеваний и способах сохранения здоровья</p>
+            </div>
+            
+            <div class="article-category">
+                <h3 class="category-title" data-translate="category-1">Инфекционные заболевания</h3>
+                <div class="articles-container">
+                    <div class="article-card" data-article="flu">
+                        <div class="article-icon">
+                            <i class="fas fa-virus"></i>
+                        </div>
+                        <h3 data-translate="article-flu">Профилактика распространения вируса гриппа</h3>
+                    </div>
+                    <div class="article-card" data-article="covid">
+                        <div class="article-icon">
+                            <i class="fas fa-head-side-mask"></i>
+                        </div>
+                        <h3 data-translate="article-covid">Профилактика распространения инфекции COVID-19</h3>
+                    </div>
+                    <div class="article-card" data-article="tuberculosis">
+                        <div class="article-icon">
+                            <i class="fas fa-lungs"></i>
+                        </div>
+                        <h3 data-translate="article-tuberculosis">Профилактика распространения инфекции туберкулеза</h3>
+                    </div>
+                    <div class="article-card" data-article="tetanus">
+                        <div class="article-icon">
+                            <i class="fas fa-bacterium"></i>
+                        </div>
+                        <h3 data-translate="article-tetanus">Профилактика распространения инфекции столбняка</h3>
+                    </div>
+                    <div class="article-card" data-article="rabies">
+                        <div class="article-icon">
+                            <i class="fas fa-dog"></i>
+                        </div>
+                        <h3 data-translate="article-rabies">Профилактика распространения инфекции бешенства</h3>
+                    </div>
+                    <div class="article-card" data-article="measles">
+                        <div class="article-icon">
+                            <i class="fas fa-temperature-high"></i>
+                        </div>
+                        <h3>Профилактика распространения кори</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="article-category other-directions">
+                <h3 class="category-title" data-translate="category-2">Другие направления</h3>
+                <div class="articles-container">
+                    <div class="article-card" data-article="smoking">
+                        <div class="article-icon">
+                            <i class="fas fa-smoking-ban"></i>
+                        </div>
+                        <h3 data-translate="article-smoking">Лечение никотиновой зависимости</h3>
+                    </div>
+                    <div class="article-card" data-article="cardio">
+                        <div class="article-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3 data-translate="article-cardio">Профилактика сердечно-сосудистых заболеваний</h3>
+                    </div>
+                    <div class="article-card" data-article="diabetes">
+                        <div class="article-icon">
+                            <i class="fas fa-syringe"></i>
+                        </div>
+                        <h3 data-translate="article-diabetes">Профилактика сахарного диабета</h3>
+                    </div>
+                    <div class="article-card" data-article="obesity">
+                        <div class="article-icon">
+                            <i class="fas fa-weight"></i>
+                        </div>
+                        <h3 data-translate="article-obesity">Профилактика ожирения</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Institutions Section -->
+    <section class="institutions-section" id="institutions">
+        <div class="container">
+            <h2 class="section-title" data-translate="section-institutions">Учреждения здравоохранения</h2>
+            
+            <div class="institutions-container">
+                <div class="institution-card">
+                    <div class="institution-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h3 data-translate="institution-1">Республиканские научно-практические центры различных профилей</h3>
+                </div>
+                
+                <div class="institution-card">
+                    <div class="institution-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3 data-translate="institution-2">Республиканские клинические больницы и реабилитационные центры</h3>
+                </div>
+                
+                <div class="institution-card">
+                    <div class="institution-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <h3 data-translate="institution-3">Станции и центры скорой медицинской помощи</h3>
+                </div>
+            </div>
+            
+            <div class="map-btn-container">
+                <button class="btn btn-large" id="show-map-btn" data-translate="map-btn">Посмотреть по карте, где находится ближайшее учреждение здравоохранения</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title" data-translate="section-about">О проекте</h2>
+            <div class="about-container">
+                <div class="about-card">
+                    <h3 data-translate="about-mission">Наша миссия</h3>
+                    <p data-translate="about-mission-text">Доступная медицина для каждого гражданина</p>
+                    
+                    <h3 data-translate="about-customer">Заказчик проекта</h3>
+                    <p data-translate="about-customer-text">Министерство здравоохранения РБ</p>
+                    
+                    <h3 data-translate="about-feedback">Обратная связь</h3>
+                    <p data-translate="about-feedback-text-1">Министерство здравоохранения Республики Беларусь.</p>
+                    <p data-translate="about-feedback-text-2">220030, г. Минск, ул. Мясникова, 39.</p>
+                    <p data-translate="about-feedback-text-3">Факс: +375 17 222 4627</p>
+                    
+                    <div class="about-links">
+                        <a href="#" data-translate="about-link-1">Пользовательское соглашение</a>
+                        <a href="#" data-translate="about-link-2">Политика конфиденциальности</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3 data-translate="footer-contacts">КОНТАКТЫ</h3>
+                    <div class="footer-contact">
+                        <p><strong data-translate="footer-ministry">Министерство здравоохранения Республики Беларусь</strong></p>
+                        <p data-translate="footer-address">220030, г. Минск, ул. Мясникова, 39</p>
+                        <p data-translate="footer-fax">Факс: +375 17 222 4627</p>
+                        
+                        <p><strong data-translate="footer-hotline">Горячая линия:</strong></p>
+                        <p data-translate="footer-phone">+375 (17) 222-70-80</p>
+                        
+                        <p data-translate="footer-email">Email: info@minzdrav.gov.by</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p data-translate="footer-copyright">&copy; 2025 Министерство здравоохранения Республики Беларусь. Все права защищены.</p>
+                <button class="vision-btn" data-translate="vision-btn">Версия для слабовидящих</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Chat -->
+    <div class="modal" id="chat-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-translate="modal-consultant">Консультант</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="message message-bot" data-translate="modal-welcome">
+                    Здравствуйте! Чем я могу вам помочь?
+                </div>
+                <div class="message-input">
+                    <input type="text" placeholder="Сообщение..." data-translate="modal-placeholder">
+                    <button><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Modal -->
+    <div class="article-modal" id="article-modal">
+        <div class="article-modal-content">
+            <div class="article-modal-header">
+                <h3 id="article-title">Статья</h3>
+                <button class="close-article-modal">&times;</button>
+            </div>
+            <div class="article-modal-body">
+                <div id="article-content">
+                    <!-- Article content will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map Modal -->
+    <div class="map-modal" id="map-modal">
+        <div class="map-modal-content">
+            <div class="map-modal-header">
+                <h3 data-translate="modal-map">Карта учреждений здравоохранения Минска</h3>
+                <button class="close-map-modal">&times;</button>
+            </div>
+            <div class="map-modal-body">
+                <iframe id="minsk-map" src="https://yandex.ru/map-widget/v1/?um=constructor%3A8d7a5f8c5c5c5c5c5c5c5c5c5c5c5c5c5c&amp;source=constructor" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Многоязычная поддержка
+        const translations = {
+            ru: {
+                // Навигация
+                "logo": "ЗДОРОВЬЕ ДЛЯ ВСЕХ",
+                "nav-personal": "Личный кабинет",
+                "nav-prevention": "Профилактика",
+                "nav-institutions": "Учреждения",
+                "nav-about": "О проекте",
+                "hotline": "Горячая линия",
+                
+                // Личный кабинет
+                "section-personal": "Личный кабинет",
+                "personal-btn-1": "Личные данные",
+                "personal-btn-2": "Запись к врачу",
+                "personal-btn-3": "Мои записи",
+                "personal-btn-4": "Мои рецепты",
+                "personal-btn-5": "Получить справку/выписку из амбулаторной карты",
+                "personal-btn-6": "История обращений",
+                "consultant-btn": "Задать вопрос консультанту",
+                
+                // Профилактика
+                "section-prevention": "Профилактика заболеваний",
+                "category-1": "Инфекционные заболевания",
+                "category-2": "Другие направления",
+                "article-flu": "Профилактика распространения вируса гриппа",
+                "article-covid": "Профилактика распространения инфекции COVID-19",
+                "article-tuberculosis": "Профилактика распространения инфекции туберкулеза",
+                "article-tetanus": "Профилактика распространения инфекции столбняка",
+                "article-rabies": "Профилактика распространения инфекции бешенства",
+                "article-smoking": "Лечение никотиновой зависимости",
+                "article-cardio": "Профилактика сердечно-сосудистых заболеваний",
+                "article-diabetes": "Профилактика сахарного диабета",
+                "article-obesity": "Профилактика ожирения",
+                
+                // Учреждения
+                "section-institutions": "Учреждения здравоохранения",
+                "institution-1": "Республиканские научно-практические центры различных профилей",
+                "institution-2": "Республиканские клинические больницы и реабилитационные центры",
+                "institution-3": "Станции и центры скорой медицинской помощи",
+                "map-btn": "Посмотреть по карте, где находится ближайшее учреждение здравоохранения",
+                
+                // О проекте
+                "section-about": "О проекте",
+                "about-mission": "Наша миссия",
+                "about-mission-text": "Доступная медицина для каждого гражданина",
+                "about-customer": "Заказчик проекта",
+                "about-customer-text": "Министерство здравоохранения РБ",
+                "about-feedback": "Обратная связь",
+                "about-feedback-text-1": "Министерство здравоохранения Республики Беларусь.",
+                "about-feedback-text-2": "220030, г. Минск, ул. Мясникова, 39.",
+                "about-feedback-text-3": "Факс: +375 17 222 4627",
+                "about-link-1": "Пользовательское соглашение",
+                "about-link-2": "Политика конфиденциальности",
+                
+                // Футер
+                "footer-contacts": "КОНТАКТЫ",
+                "footer-ministry": "Министерство здравоохранения Республики Беларусь",
+                "footer-address": "220030, г. Минск, ул. Мясникова, 39",
+                "footer-fax": "Факс: +375 17 222 4627",
+                "footer-hotline": "Горячая линия:",
+                "footer-phone": "+375 (17) 222-70-80",
+                "footer-email": "Email: info@minzdrav.gov.by",
+                "footer-copyright": "© 2025 Министерство здравоохранения Республики Беларусь. Все права защищены.",
+                "vision-btn": "Версия для слабовидящих",
+                
+                // Модальные окна
+                "modal-consultant": "Консультант",
+                "modal-welcome": "Здравствуйте! Чем я могу вам помочь?",
+                "modal-placeholder": "Сообщение...",
+                "modal-map": "Карта учреждений здравоохранения Минска"
+            },
+            en: {
+                // Навигация
+                "logo": "HEALTH FOR ALL",
+                "nav-personal": "Personal Account",
+                "nav-prevention": "Prevention",
+                "nav-institutions": "Institutions",
+                "nav-about": "About",
+                "hotline": "Hotline",
+                
+                // Личный кабинет
+                "section-personal": "Personal Account",
+                "personal-btn-1": "Personal Data",
+                "personal-btn-2": "Doctor Appointment",
+                "personal-btn-3": "My Appointments",
+                "personal-btn-4": "My Prescriptions",
+                "personal-btn-5": "Get Certificate/Extract from Medical Record",
+                "personal-btn-6": "Visit History",
+                "consultant-btn": "Ask a Consultant",
+                
+                // Профилактика
+                "section-prevention": "Disease Prevention",
+                "category-1": "Infectious Diseases",
+                "category-2": "Other Areas",
+                "article-flu": "Prevention of Influenza Virus Spread",
+                "article-covid": "Prevention of COVID-19 Infection Spread",
+                "article-tuberculosis": "Prevention of Tuberculosis Infection Spread",
+                "article-tetanus": "Prevention of Tetanus Infection Spread",
+                "article-rabies": "Prevention of Rabies Infection Spread",
+                "article-smoking": "Nicotine Addiction Treatment",
+                "article-cardio": "Prevention of Cardiovascular Diseases",
+                "article-diabetes": "Prevention of Diabetes",
+                "article-obesity": "Prevention of Obesity",
+                
+                // Учреждения
+                "section-institutions": "Healthcare Institutions",
+                "institution-1": "Republican Research and Practical Centers of Various Specialties",
+                "institution-2": "Republican Clinical Hospitals and Rehabilitation Centers",
+                "institution-3": "Ambulance Stations and Centers",
+                "map-btn": "View on map where the nearest healthcare institution is located",
+                
+                // О проекте
+                "section-about": "About the Project",
+                "about-mission": "Our Mission",
+                "about-mission-text": "Accessible medicine for every citizen",
+                "about-customer": "Project Customer",
+                "about-customer-text": "Ministry of Health of the Republic of Belarus",
+                "about-feedback": "Feedback",
+                "about-feedback-text-1": "Ministry of Health of the Republic of Belarus.",
+                "about-feedback-text-2": "220030, Minsk, Myasnikova str., 39.",
+                "about-feedback-text-3": "Fax: +375 17 222 4627",
+                "about-link-1": "User Agreement",
+                "about-link-2": "Privacy Policy",
+                
+                // Футер
+                "footer-contacts": "CONTACTS",
+                "footer-ministry": "Ministry of Health of the Republic of Belarus",
+                "footer-address": "220030, Minsk, Myasnikova str., 39",
+                "footer-fax": "Fax: +375 17 222 4627",
+                "footer-hotline": "Hotline:",
+                "footer-phone": "+375 (17) 222-70-80",
+                "footer-email": "Email: info@minzdrav.gov.by",
+                "footer-copyright": "© 2025 Ministry of Health of the Republic of Belarus. All rights reserved.",
+                "vision-btn": "Version for visually impaired",
+                
+                // Модальные окна
+                "modal-consultant": "Consultant",
+                "modal-welcome": "Hello! How can I help you?",
+                "modal-placeholder": "Message...",
+                "modal-map": "Map of Minsk Healthcare Institutions"
+            },
+            bel: {
+                // Навигация
+                "logo": "ЗДАРОЎЕ ДЛЯ УСІХ",
+                "nav-personal": "Асабісты кабінет",
+                "nav-prevention": "Прафілактыка",
+                "nav-institutions": "Установы",
+                "nav-about": "Аб праекце",
+                "hotline": "Гарачая лінія",
+                
+                // Остальные переводы на белорусский можно добавить аналогично
+                // Для краткости оставим только основные элементы
+                "section-personal": "Асабісты кабінет",
+                "section-prevention": "Прафілактыка захворванняў",
+                "section-institutions": "Установы аховы здароўя",
+                "section-about": "Аб праекце"
+            }
+        };
+
+        // Функция смены языка
+        function setLanguage(lang) {
+            // Обновляем активную кнопку языка
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Обновляем все элементы с data-translate
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
+                        element.setAttribute('placeholder', translations[lang][key]);
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            // Сохраняем выбранный язык в localStorage
+            localStorage.setItem('selectedLanguage', lang);
+        }
+
+        // Мобильное меню
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        });
+
+        // Закрытие меню при клике на ссылку
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                const navMenu = document.getElementById('nav-menu');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Модальное окно чата
+        const askConsultantBtn = document.getElementById('ask-consultant-btn');
+        const chatModal = document.getElementById('chat-modal');
+        const closeModal = document.querySelector('.close-modal');
+
+        askConsultantBtn.addEventListener('click', function() {
+            chatModal.style.display = 'flex';
+        });
+
+        closeModal.addEventListener('click', function() {
+            chatModal.style.display = 'none';
+        });
+
+        // Модальное окно карты
+        const showMapBtn = document.getElementById('show-map-btn');
+        const mapModal = document.getElementById('map-modal');
+        const closeMapModal = document.querySelector('.close-map-modal');
+
+        showMapBtn.addEventListener('click', function() {
+            mapModal.style.display = 'flex';
+        });
+
+        closeMapModal.addEventListener('click', function() {
+            mapModal.style.display = 'none';
+        });
+
+        // Закрытие модальных окон при клике вне их
+        window.addEventListener('click', function(event) {
+            if (event.target === chatModal) {
+                chatModal.style.display = 'none';
+            }
+            if (event.target === mapModal) {
+                mapModal.style.display = 'none';
+            }
+        });
+
+        // Языковой переключатель
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                setLanguage(lang);
+            });
+        });
+
+        // Загружаем сохраненный язык при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'ru';
+            setLanguage(savedLanguage);
+        });
+
+        // Article modals
+        const articleModal = document.getElementById('article-modal');
+        const closeArticleModal = document.querySelector('.close-article-modal');
+        const articleTitle = document.getElementById('article-title');
+        const articleContent = document.getElementById('article-content');
+        
+        // Article content
+        const articles = {
+            'flu': {
+                title: 'Профилактика распространения вируса гриппа',
+                content: `
+                    <h3>Что такое грипп?</h3>
+                    <p>Грипп — это острое инфекционное заболевание дыхательных путей, вызываемое вирусом гриппа. Он передается воздушно-капельным путем и может привести к серьезным осложнениям.</p>
+                    
+                    <h3>Меры профилактики:</h3>
+                    <ul>
+                        <li>Ежегодная вакцинация против гриппа</li>
+                        <li>Регулярное мытье рук с мылом</li>
+                        <li>Избегание близкого контакта с больными людьми</li>
+                        <li>Прикрывание рта и носа при кашле и чихании</li>
+                        <li>Проветривание помещений</li>
+                        <li>Здоровый образ жизни</li>
+                    </ul>
+                    
+                    <h3>Симптомы гриппа:</h3>
+                    <p>Высокая температура, кашель, боль в горле, насморк или заложенность носа, ломота в теле, головная боль, озноб, усталость.</p>
+                `
+            },
+            'covid': {
+                title: 'Профилактика распространения инфекции COVID-19',
+                content: `
+                    <h3>Что такое COVID-19?</h3>
+                    <p>COVID-19 — это инфекционное заболевание, вызванное новым коронавирусом SARS-CoV-2. Заболевание впервые выявлено в Китае в конце 2019 года.</p>
+                    
+                    <h3>Меры профилактики:</h3>
+                    <ul>
+                        <li>Вакцинация против COVID-19</li>
+                        <li>Ношение масок в общественных местах</li>
+                        <li>Соблюдение социальной дистанции</li>
+                        <li>Регулярное мытье и дезинфекция рук</li>
+                        <li>Проветривание помещений</li>
+                        <li>Избегание мест массового скопления людей</li>
+                    </ul>
+                    
+                    <h3>Симптомы COVID-19:</h3>
+                    <p>Повышенная температура, сухой кашель, утомляемость, потеря вкуса или обоняния, боль в горле, головная боль, затрудненное дыхание.</p>
+                `
+            },
+            'tuberculosis': {
+                title: 'Профилактика распространения инфекции туберкулеза',
+                content: `
+                    <h3>Что такое туберкулез?</h3>
+                    <p>Туберкулез — это инфекционное заболевание, вызываемое микобактерией туберкулеза. Чаще всего поражает легкие, но может затрагивать и другие органы.</p>
+                    
+                    <h3>Меры профилактики:</h3>
+                    <ul>
+                        <li>Вакцинация БЦЖ</li>
+                        <li>Регулярное флюорографическое обследование</li>
+                        <li>Соблюдение правил личной гигиены</li>
+                        <li>Проветривание помещений</li>
+                        <li>Полноценное питание</li>
+                        <li>Отказ от курения и злоупотребления алкоголем</li>
+                    </ul>
+                    
+                    <h3>Симптомы туберкулеза:</h3>
+                    <p>Длительный кашель (более 3 недель), боль в груди, кровохарканье, слабость, утомляемость, потеря веса, повышенная температура, ночная потливость.</p>
+                `
+            },
+            'tetanus': {
+                title: 'Профилактика распространения инфекции столбняка',
+                content: `
+                    <h3>Что такое столбняк?</h3>
+                    <p>Столбняк — это острое инфекционное заболевание, вызываемое токсином бактерии Clostridium tetani. Характеризуется поражением нервной системы и судорогами.</p>
+                    
+                    <h3>Меры профилактики:</h3>
+                    <ul>
+                        <li>Плановая вакцинация АКДС</li>
+                        <li>Экстренная профилактика при травмах</li>
+                        <li>Обработка ран и порезов</li>
+                        <li>Соблюдение правил асептики и антисептики</li>
+                    </ul>
+                    
+                    <h3>Симптомы столбняка:</h3>
+                    <p>Напряжение и судорожное сокращение мышц челюсти, затруднение глотания, напряжение мышц затылка, спины, живота, болезненные судороги.</p>
+                `
+            },
+            'rabies': {
+                title: 'Профилактика распространения инфекции бешенства',
+                content: `
+                    <h3>Что такое бешенство?</h3>
+                    <p>Бешенство — это острое вирусное инфекционное заболевание, которое поражает центральную нервную систему и всегда заканчивается летальным исходом.</p>
+                    
+                    <h3>Меры профилактики:</h3>
+                    <ul>
+                        <li>Вакцинация домашних животных</li>
+                        <li>Избегание контакта с дикими животными</li>
+                        <li>Немедленное обращение к врачу при укусах</li>
+                        <li>Проведение курса антирабических прививок</li>
+                    </ul>
+                    
+                    <h3>Симптомы бешенства:</h3>
+                    <p>Повышенная температура, боль в месте укуса, водобоязнь, светобоязнь, звукобоязнь, повышенное слюноотделение, судороги, параличи.</p>
+                `
+            },
+            'measles': {
+                title: 'Профилактика распространения кори',
+                content: `
+                    <h3>Что такое корь?</h3>
+                    <p>Корь — это высококонтагиозное вирусное заболевание, которое передается воздушно-капельным путем и характеризуется высокой температурой, сыпью и поражением дыхательных путей.</p>
+                    
+                    <h3>Меры профилактики:</h3>
+                    <ul>
+                        <li>Плановая вакцинация против кори</li>
+                        <li>Изоляция больных на период заразности</li>
+                        <li>Соблюдение правил личной гигиены</li>
+                        <li>Проветривание помещений</li>
+                        <li>Дезинфекция в очагах инфекции</li>
+                    </ul>
+                    
+                    <h3>Симптомы кори:</h3>
+                    <p>Высокая температура, кашель, насморк, конъюнктивит, сыпь, появляющаяся на 3-5 день болезни, светобоязнь.</p>
+                `
+            },
+            'smoking': {
+                title: 'Лечение никотиновой зависимости',
+                content: `
+                    <h3>Что такое никотиновая зависимость?</h3>
+                    <p>Никотиновая зависимость — это физическая и психологическая зависимость от никотина, содержащегося в табачных изделиях.</p>
+                    
+                    <h3>Методы лечения:</h3>
+                    <ul>
+                        <li>Никотинзаместительная терапия (пластыри, жвачки)</li>
+                        <li>Лекарственная терапия (варениклин, бупропион)</li>
+                        <li>Поведенческая терапия и консультации</li>
+                        <li>Иглоукалывание</li>
+                        <li>Гипнотерапия</li>
+                    </ul>
+                    
+                    <h3>Преимущества отказа от курения:</h3>
+                    <p>Улучшение здоровья, снижение риска заболеваний, экономия денег, улучшение внешности, повышение качества жизни.</p>
+                `
+            },
+            'cardio': {
+                title: 'Профилактика сердечно-сосудистых заболеваний',
+                content: `
+                    <h3>Что такое сердечно-сосудистые заболевания?</h3>
+                    <p>Сердечно-сосудистые заболевания — это группа болезней сердца и кровеносных сосудов, включая ишемическую болезнь сердца, инфаркт, инсульт.</p>
+                    
+                    <h3>Меры профилактики:</h3>
+                    <ul>
+                        <li>Регулярная физическая активность</li>
+                        <li>Здоровое питание</li>
+                        <li>Контроль артериального давления</li>
+                        <li>Контроль уровня холестерина</li>
+                        <li>Отказ от курения</li>
+                        <li>Ограничение употребления алкоголя</li>
+                        <li>Контроль стресса</li>
+                    </ul>
+                    
+                    <h3>Факторы риска:</h3>
+                    <p>Высокое артериальное давление, высокий уровень холестерина, курение, диабет, ожирение, малоподвижный образ жизни, наследственность.</p>
+                `
+            },
+            'diabetes': {
+                title: 'Профилактика сахарного диабета',
+                content: `
+                    <h3>Что такое сахарный диабет?</h3>
+                    <p>Сахарный диабет — это хроническое заболевание, при котором уровень сахара в крови повышен из-за недостатка инсулина или его неэффективного использования.</p>
+                    
+                    <h3>Меры профилактики:</h3>
+                    <ul>
+                        <li>Поддержание здорового веса</li>
+                        <li>Регулярная физическая активность</li>
+                        <li>Здоровое питание</li>
+                        <li>Ограничение потребления сахара и рафинированных углеводов</li>
+                        <li>Отказ от курения</li>
+                        <li>Регулярные медицинские осмотры</li>
+                    </ul>
+                    
+                    <h3>Симптомы диабета:</h3>
+                    <p>Частое мочеиспускание, повышенная жажда, постоянное чувство голода, потеря веса, усталость, нечеткость зрения, медленное заживление ран.</p>
+                `
+            },
+            'obesity': {
+                title: 'Профилактика ожирения',
+                content: `
+                    <h3>Что такое ожирение?</h3>
+                    <p>Ожирение — это заболевание, характеризующееся избыточным накоплением жировой ткани в организме, которое может привести к проблемам со здоровьем.</p>
+                    
+                    <h3>Меры профилактики:</h3>
+                    <ul>
+                        <li>Сбалансированное питание</li>
+                        <li>Регулярная физическая активность</li>
+                        <li>Контроль веса</li>
+                        <li>Ограничение потребления высококалорийных продуктов</li>
+                        <li>Достаточное потребление воды</li>
+                        <li>Регулярный сон</li>
+                    </ul>
+                    
+                    <h3>Последствия ожирения:</h3>
+                    <p>Сахарный диабет 2 типа, сердечно-сосудистые заболевания, некоторые виды рака, заболевания опорно-двигательного аппарата, психологические проблемы.</p>
+                `
+            }
+        };
+
+        // Open article modal
+        document.querySelectorAll('.article-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const articleId = this.getAttribute('data-article');
+                const article = articles[articleId];
+                
+                if (article) {
+                    articleTitle.textContent = article.title;
+                    articleContent.innerHTML = article.content;
+                    articleModal.style.display = 'flex';
+                }
+            });
+        });
+
+        // Close article modal
+        closeArticleModal.addEventListener('click', function() {
+            articleModal.style.display = 'none';
+        });
+
+        // Close article modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === articleModal) {
+                articleModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
