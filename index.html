@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ЗДОРОВЬЕ ДЛЯ ВСЕХ</title>
+    <title>HEALTH FOR ALL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -1731,8 +1731,8 @@
         const articleTitle = document.getElementById('article-title');
         const articleContent = document.getElementById('article-content');
         
-        // Article content
-        const articles = {
+        // Article content - Russian version
+        const articlesRu = {
             'flu': {
                 title: 'Профилактика распространения вируса гриппа',
                 content: `
@@ -1930,11 +1930,222 @@
             }
         };
 
+        // Article content - English version
+        const articlesEn = {
+            'flu': {
+                title: 'Prevention of Influenza Virus Spread',
+                content: `
+                    <h3>What is influenza?</h3>
+                    <p>Influenza is an acute infectious respiratory disease caused by the influenza virus. It is transmitted by airborne droplets and can lead to serious complications.</p>
+                    
+                    <h3>Prevention measures:</h3>
+                    <ul>
+                        <li>Annual influenza vaccination</li>
+                        <li>Regular hand washing with soap</li>
+                        <li>Avoiding close contact with sick people</li>
+                        <li>Covering mouth and nose when coughing and sneezing</li>
+                        <li>Ventilating rooms</li>
+                        <li>Healthy lifestyle</li>
+                    </ul>
+                    
+                    <h3>Influenza symptoms:</h3>
+                    <p>High fever, cough, sore throat, runny or stuffy nose, body aches, headache, chills, fatigue.</p>
+                `
+            },
+            'covid': {
+                title: 'Prevention of COVID-19 Infection Spread',
+                content: `
+                    <h3>What is COVID-19?</h3>
+                    <p>COVID-19 is an infectious disease caused by the new coronavirus SARS-CoV-2. The disease was first identified in China at the end of 2019.</p>
+                    
+                    <h3>Prevention measures:</h3>
+                    <ul>
+                        <li>Vaccination against COVID-19</li>
+                        <li>Wearing masks in public places</li>
+                        <li>Maintaining social distance</li>
+                        <li>Regular hand washing and disinfection</li>
+                        <li>Ventilating rooms</li>
+                        <li>Avoiding crowded places</li>
+                    </ul>
+                    
+                    <h3>COVID-19 symptoms:</h3>
+                    <p>Fever, dry cough, fatigue, loss of taste or smell, sore throat, headache, difficulty breathing.</p>
+                `
+            },
+            'tuberculosis': {
+                title: 'Prevention of Tuberculosis Infection Spread',
+                content: `
+                    <h3>What is tuberculosis?</h3>
+                    <p>Tuberculosis is an infectious disease caused by Mycobacterium tuberculosis. It most often affects the lungs but can also affect other organs.</p>
+                    
+                    <h3>Prevention measures:</h3>
+                    <ul>
+                        <li>BCG vaccination</li>
+                        <li>Regular fluorographic examination</li>
+                        <li>Observing personal hygiene rules</li>
+                        <li>Ventilating rooms</li>
+                        <li>Adequate nutrition</li>
+                        <li>Avoiding smoking and excessive alcohol consumption</li>
+                    </ul>
+                    
+                    <h3>Tuberculosis symptoms:</h3>
+                    <p>Persistent cough (more than 3 weeks), chest pain, hemoptysis, weakness, fatigue, weight loss, fever, night sweats.</p>
+                `
+            },
+            'tetanus': {
+                title: 'Prevention of Tetanus Infection Spread',
+                content: `
+                    <h3>What is tetanus?</h3>
+                    <p>Tetanus is an acute infectious disease caused by the toxin of the bacterium Clostridium tetani. It is characterized by damage to the nervous system and convulsions.</p>
+                    
+                    <h3>Prevention measures:</h3>
+                    <ul>
+                        <li>Routine DTP vaccination</li>
+                        <li>Emergency prophylaxis for injuries</li>
+                        <li>Wound and cut treatment</li>
+                        <li>Observing aseptic and antiseptic rules</li>
+                    </ul>
+                    
+                    <h3>Tetanus symptoms:</h3>
+                    <p>Tension and convulsive contraction of jaw muscles, difficulty swallowing, tension of neck, back, and abdominal muscles, painful convulsions.</p>
+                `
+            },
+            'rabies': {
+                title: 'Prevention of Rabies Infection Spread',
+                content: `
+                    <h3>What is rabies?</h3>
+                    <p>Rabies is an acute viral infectious disease that affects the central nervous system and is always fatal.</p>
+                    
+                    <h3>Prevention measures:</h3>
+                    <ul>
+                        <li>Vaccination of domestic animals</li>
+                        <li>Avoiding contact with wild animals</li>
+                        <li>Immediate medical attention after bites</li>
+                        <li>Course of anti-rabies vaccinations</li>
+                    </ul>
+                    
+                    <h3>Rabies symptoms:</h3>
+                    <p>Fever, pain at the bite site, hydrophobia, photophobia, sound sensitivity, increased salivation, convulsions, paralysis.</p>
+                `
+            },
+            'measles': {
+                title: 'Prevention of Measles Spread',
+                content: `
+                    <h3>What is measles?</h3>
+                    <p>Measles is a highly contagious viral disease transmitted by airborne droplets and characterized by high fever, rash, and respiratory tract damage.</p>
+                    
+                    <h3>Prevention measures:</h3>
+                    <ul>
+                        <li>Routine measles vaccination</li>
+                        <li>Isolation of patients during the contagious period</li>
+                        <li>Observing personal hygiene rules</li>
+                        <li>Ventilating rooms</li>
+                        <li>Disinfection in infection foci</li>
+                    </ul>
+                    
+                    <h3>Measles symptoms:</h3>
+                    <p>High fever, cough, runny nose, conjunctivitis, rash appearing on days 3-5 of illness, photophobia.</p>
+                `
+            },
+            'smoking': {
+                title: 'Nicotine Addiction Treatment',
+                content: `
+                    <h3>What is nicotine addiction?</h3>
+                    <p>Nicotine addiction is a physical and psychological dependence on nicotine contained in tobacco products.</p>
+                    
+                    <h3>Treatment methods:</h3>
+                    <ul>
+                        <li>Nicotine replacement therapy (patches, gums)</li>
+                        <li>Medication therapy (varenicline, bupropion)</li>
+                        <li>Behavioral therapy and counseling</li>
+                        <li>Acupuncture</li>
+                        <li>Hypnotherapy</li>
+                    </ul>
+                    
+                    <h3>Benefits of quitting smoking:</h3>
+                    <p>Improved health, reduced risk of diseases, money savings, improved appearance, better quality of life.</p>
+                `
+            },
+            'cardio': {
+                title: 'Prevention of Cardiovascular Diseases',
+                content: `
+                    <h3>What are cardiovascular diseases?</h3>
+                    <p>Cardiovascular diseases are a group of heart and blood vessel diseases, including coronary heart disease, heart attack, and stroke.</p>
+                    
+                    <h3>Prevention measures:</h3>
+                    <ul>
+                        <li>Regular physical activity</li>
+                        <li>Healthy eating</li>
+                        <li>Blood pressure control</li>
+                        <li>Cholesterol level control</li>
+                        <li>Smoking cessation</li>
+                        <li>Limiting alcohol consumption</li>
+                        <li>Stress management</li>
+                    </ul>
+                    
+                    <h3>Risk factors:</h3>
+                    <p>High blood pressure, high cholesterol levels, smoking, diabetes, obesity, sedentary lifestyle, heredity.</p>
+                `
+            },
+            'diabetes': {
+                title: 'Prevention of Diabetes',
+                content: `
+                    <h3>What is diabetes?</h3>
+                    <p>Diabetes is a chronic disease in which blood sugar levels are elevated due to insufficient insulin or its ineffective use.</p>
+                    
+                    <h3>Prevention measures:</h3>
+                    <ul>
+                        <li>Maintaining a healthy weight</li>
+                        <li>Regular physical activity</li>
+                        <li>Healthy eating</li>
+                        <li>Limiting sugar and refined carbohydrate intake</li>
+                        <li>Smoking cessation</li>
+                        <li>Regular medical check-ups</li>
+                    </ul>
+                    
+                    <h3>Diabetes symptoms:</h3>
+                    <p>Frequent urination, increased thirst, constant hunger, weight loss, fatigue, blurred vision, slow wound healing.</p>
+                `
+            },
+            'obesity': {
+                title: 'Prevention of Obesity',
+                content: `
+                    <h3>What is obesity?</h3>
+                    <p>Obesity is a disease characterized by excessive accumulation of fat tissue in the body, which can lead to health problems.</p>
+                    
+                    <h3>Prevention measures:</h3>
+                    <ul>
+                        <li>Balanced diet</li>
+                        <li>Regular physical activity</li>
+                        <li>Weight control</li>
+                        <li>Limiting high-calorie food consumption</li>
+                        <li>Adequate water intake</li>
+                        <li>Regular sleep</li>
+                    </ul>
+                    
+                    <h3>Consequences of obesity:</h3>
+                    <p>Type 2 diabetes, cardiovascular diseases, some types of cancer, musculoskeletal diseases, psychological problems.</p>
+                `
+            }
+        };
+
+        // Current articles based on language
+        let currentArticles = articlesRu;
+
+        // Update articles when language changes
+        function updateArticles(lang) {
+            if (lang === 'en') {
+                currentArticles = articlesEn;
+            } else {
+                currentArticles = articlesRu;
+            }
+        }
+
         // Open article modal
         document.querySelectorAll('.article-card').forEach(card => {
             card.addEventListener('click', function() {
                 const articleId = this.getAttribute('data-article');
-                const article = articles[articleId];
+                const article = currentArticles[articleId];
                 
                 if (article) {
                     articleTitle.textContent = article.title;
@@ -1954,6 +2165,19 @@
             if (event.target === articleModal) {
                 articleModal.style.display = 'none';
             }
+        });
+
+        // Update the setLanguage function to also update articles
+        const originalSetLanguage = setLanguage;
+        setLanguage = function(lang) {
+            originalSetLanguage(lang);
+            updateArticles(lang);
+        };
+
+        // Initialize articles on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'ru';
+            updateArticles(savedLanguage);
         });
     </script>
 </body>
